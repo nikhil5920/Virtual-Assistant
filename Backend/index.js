@@ -8,7 +8,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // CORS config — allow your frontend origin and allow credentials (cookies)
 app.use(cors({

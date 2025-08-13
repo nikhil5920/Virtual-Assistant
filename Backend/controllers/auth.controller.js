@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import generateToken from "../config/token.js"
 
 const signUp = async (req, res) => {
     console.log("i am hear*****************");
@@ -40,7 +41,7 @@ const signUp = async (req, res) => {
         secure: false, // Set to true if using HTTPS
         });
 
-        return res.status(201).json(user);
+        return res.status(201).json(newUser);
 
     } catch (error) {
         console.error("Error during sign up:", error);
