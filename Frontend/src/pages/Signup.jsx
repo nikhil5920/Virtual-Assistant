@@ -16,18 +16,25 @@ function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [err, setErr] = useState('');
+    const [loadingSignUp, setloadingSignUp] = useState(false);
 
     const handleSignUp = async () => {
         console.log(`URL : ${serverUrl}/api/auth/signup`);
         try {
+            setErr("");
+            setloadingSignUp(true);
             const result = await axios.post(`${serverUrl}/api/auth/signup`,
                 {name, email, password },
                 {withCredentials: true}
             );
     
             console.log("Signup success:", result.data);
+            setloadingSignUp(false);
     
         } catch (error) {
+            setloadingSignUp(false);
+            setErr(error.response.data.message);
             // More detailed error logging
             if (error.response) {
                 console.error("❌ Server responded with error:");
@@ -96,9 +103,12 @@ function SignUp() {
                         <IoEyeOutline className='absolute top-[20px] right-[20px] text-white' onClick={() => setshowPassword(false)} />
                     }
                 </div>
+                {err.length > 0 && <p className='text-red-600'>
+                    *{err}
+                </p>}
 
-                <button className='min-w-[150px] mt-[20px] h-[60px] bg-blue-500 rounded-3xl text-black font-bold text-19px'>
-                    Sign-up
+                <button className='min-w-[150px] mt-[20px] h-[60px] bg-blue-500 rounded-3xl text-black font-bold text-19px' disabled={loadingSignUp}>
+                {loadingSignUp ? 'Loading...' : 'Sign-up'}
                 </button>
 
                 <p className='text-white text-[16px] cursor-pointer' onClick={() => navigat('/signin')}>
