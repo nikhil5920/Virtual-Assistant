@@ -2,8 +2,7 @@ import React, { createContext } from "react";
 export const userDataContext = createContext();
 
 function UserContext({children}){
-    const serverUrl = "http://localhost:8000";
-    console.log("getting4444");
+    const serverUrl = "http://localhost:3000";
  
     const value = { serverUrl }
 
