@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../config/token.js"
 
-const signUp = async (req, res) => {
+export const signUp = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
@@ -49,8 +49,6 @@ const signUp = async (req, res) => {
         });
     }
 };
-
-export default signUp;
 
 export const signIn = async (req, res) => {
     try {
