@@ -4,6 +4,7 @@ dotenv.config();
 
 import connectDb from './config/db.js';
 import userAuthRouter from './routes/userAuthRouterroutes.js';
+import userRouter from './routes/userRoutes.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 
 // Route all /api/auth requests to userAuthRouter
 app.use('/api/auth', userAuthRouter);
+app.use('/api/user', userRouter);
 
 // Connect to database, then start server
 connectDb().then(() => {
