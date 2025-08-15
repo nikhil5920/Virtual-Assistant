@@ -1,4 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect} from "react";
+import axios from 'axios';
+
 export const userDataContext = createContext();
 
 function UserContext({children}){
@@ -11,11 +13,15 @@ function UserContext({children}){
             setUserData(result.data);
             console.log('result.data : ', result.data);
         } catch (error) {
-            console.log(`UserContext error`)
+            console.log(error)
         }
     }
+
+    useEffect(() => {
+        handleCurrentUser()
+    },[])
     
-    const value = { serverUrl }
+    const value = { serverUrl, userData, setUserData}
 
     return(
         <div>

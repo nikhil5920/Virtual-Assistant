@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import Login_Page_background from '../assets/Sign_up_page_background.jpg';
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
@@ -31,6 +31,7 @@ function SignUp() {
     
             console.log("Signup success:", result.data);
             setloadingSignUp(false);
+            Navigate('/customize');
     
         } catch (error) {
             setloadingSignUp(false);

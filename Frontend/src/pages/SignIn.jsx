@@ -29,6 +29,7 @@ function SignIn() {
     
             console.log("Signin success:", result.data);
             setloadingSignIn(false);
+            Navigate('/');
     
         } catch (error) {
             setloadingSignIn(false);
